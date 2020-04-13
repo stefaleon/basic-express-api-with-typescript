@@ -24,3 +24,13 @@ _tsconfig.json_
   }
 }
 ```
+
+## 02
+
+```
+npm i express @types/express
+```
+
+```
+npm i -D concurrently nodemon
+```
