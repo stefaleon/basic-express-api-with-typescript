@@ -1,7 +1,14 @@
 import { Request, Response } from 'express';
+import Book from './../book';
 
 export let allBooks = (req: Request, res: Response) => {
-  res.send('Returns all Books');
+  let books = Book.find((err: any, books: any) => {
+    if (err) {
+      res.send('Error!');
+    } else {
+      res.send(books);
+    }
+  });
 };
 
 export let getBook = (req: Request, res: Response) => {

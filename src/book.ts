@@ -1,15 +1,18 @@
 import * as mongoose from 'mongoose';
+const mongoosedb = require('mongoose');
 
 const uri: string =
   'mongodb+srv://leon123:leon123@cluster0-sxvew.mongodb.net/books?retryWrites=true&w=majority';
 
-mongoose.connect(uri, (err: any) => {
-  if (err) {
-    console.log(err.message);
-  } else {
-    console.log('Successfully Connected!');
-  }
-});
+mongoosedb
+  .connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log('Successfully Connected to MongoDB'))
+  .catch(() => console.log('Cannot connect to MongoDB'));
 
 export interface IBook extends mongoose.Document {
   title: string;
